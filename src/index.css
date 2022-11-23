@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100;1,300;1,400;1,900&display=swap');
+
+body {
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+Link:hover {
+  color: #FF4742;
+  font-size: large
+}
+
+/*    The Main home page    */
+
+.main {
+  position: absolute;
+  object-fit: cover;
+  z-index: -1;
+  top: 0rem;
+
+
+}
+
+.main_content {
+  color: white;
+}
+
+.main_content ul {
+  display: flex;
+
+}
+
+.main_content li {
+  margin: auto;
+  list-style: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: white;
+}
+
+.main_content li :hover {
+  color: #FF4742;
+}
+
+.login_spot {
+  margin-top: 18rem;
+  text-align: center;
+  color: white;
+}
+
+.login_spot h1 {
+  font-size: 6rem;
+  font-weight: 250;
+}
+
+.login_spot button {
+
+  background: #FF4742;
+  border: 2px solid #FF4742;
+  border-radius: 0.6rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+  font-size: 2rem;
+  font-weight: 200;
+  line-height: 2rem;
+  min-height: 40px;
+  outline: 0;
+  padding: 2rem;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  margin: 1rem;
+  margin-top: -1rem;
+}
+
+.login_spot button:hover,
+.login_spot button:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+  font-weight: 800;
+}
+
+.button-24:active {
+  opacity: .5;
+}
+
+
+.buttons_login {
+  display: flex;
+  justify-content: center;
+
+}
+
+.btn {
+  background-color: #FF4742;
+  color: white;
+  padding: 1.4rem;
+  margin-top: 4rem;
+  font-size: 1rem;
+  font-weight: 50;
+  border: 2px solid #FF4742;
+  border-radius: 1rem;
+  cursor: pointer;
+  padding-left: 9rem;
+  padding-right: 9rem;
+
+}
+
+.btn:hover {
+  color: #FF4742;
+  background-color: transparent;
+  font-weight: 500;
+}
+
+
+
+/* Sign up Page css  */
+.signup_input,
+.login_input {
+  border-radius: 1rem;
+  padding: 1.1rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+
+
+/* *****************  NAvbar for main   ***************** */
+
+.navbar_components {
+  display: flex;
+}
+
+.navbar li {
+  list-style: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar li :hover {
+  color: #FF4742;
+}
+
+
+
+
+
+
+
+/* Add Image Css  */
+.Drag_Area {
+  cursor: pointer;
+  /* border:  solid black; */
+  margin: 6rem;
+  text-align: center;
+  padding: 4rem;
+  border-radius: 2rem;
+  font-weight: 500;
+  margin-left: 18rem;
+  margin-right: 18rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.Drag_Area:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.Select_Report {
+  background-color: blue;
+  color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+/* *************  Footer    ***************** */
+.footer_container {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: white;
+  margin-top: -1rem;
+
+}
+
+.footer_container div {
+  margin: auto;
+  text-align: center;
+
+}
