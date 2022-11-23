@@ -5,9 +5,13 @@ import {
   signOut,
 } from "firebase/auth";
 
-import { onSnapshot } from "firebase/firestore";
-
-import { addDoc, collection } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
 
 import { auth, db } from "./configuration";
 
@@ -77,21 +81,9 @@ const registerPatient = async ({
       console.log(doc.data());
       resolve(doc);
     });
+    //Have to save unsubscribe
   });
 };
-/**
- * 
-  const[firstName,setFirstName]=useState('');
-  const[lastName,setLastName]=useState('');
-  const[gender,setGender]=useState('');
-  const[age,setAge]=useState('');
-  const[phone,setPhone]=useState('');
-  const[email,setEmail]=useState('');
-  const[password,setPassword]=useState('');
-  const[pincode,setPincode]=useState('');
-
-
- */
 
 /**
  * @param {payload} param
@@ -102,12 +94,51 @@ const registerPatient = async ({
 const login = async ({ email, password, userType }) => {
   try {
     const user = await signInWithEmailAndPassword(auth, email, password);
-    if (userType == "doctor") {
+    const uid = user.user.uid;
+    console.log({ uid });
+    if (userType === "patient") {
+      const patientsCollectionRef = collection(db, "Patients");
+      return new Promise((resolve, reject) => {
+        const patientUnsubscribe = onSnapshot(
+          query(patientsCollectionRef, where("uid", "==", uid)),
+          (querySnapshot) => {
+            if (querySnapshot.empty)
+              reject("Internal Error, users not properly registered");
+            resolve(querySnapshot.docs[0]);
+          }
+        );
+        //Have to save unsubscribe
+      });
     }
-    if (userType == "patient") {
+    if (userType === "doctor") {
+      const doctorCollectionRef = collection(db, "Doctors");
+      return new Promise((resolve, reject) => {
+        const doctorUnsubscribe = onSnapshot(
+          query(doctorCollectionRef, where("uid", "==", uid)),
+          (querySnapshot) => {
+            if (querySnapshot.empty)
+              reject("Internal Error, users not properly registered");
+            resolve(querySnapshot.docs[0]);
+          }
+        );
+        //Have to save unsubscribe
+      });
+      //Have to save the userCredential
     }
-    console.log({ email, password });
-    console.log({ user });
+    if (userType === "admin") {
+      const adminCollectionRef = collection(db, "Admin");
+      return new Promise((resolve, reject) => {
+        const adminUnsubscribe = onSnapshot(
+          query(adminCollectionRef, where("uid", "==", uid)),
+          (querySnapshot) => {
+            if (querySnapshot.empty)
+              reject("Internal Error,Admin has not been registered");
+            resolve(querySnapshot.docs[0]);
+          }
+        );
+        //Have to save unsubscribe
+      });
+    }
   } catch (error) {
     throw new Error(error);
   }

@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import DoctorLoginImg from "../Assests/DoctorLoginImg.jpg";
+import {login} from  "../firebase"
 
 function Copyright(props) {
   return (
@@ -35,13 +36,16 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function AdminLogin() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    console.log("SANGENA")
+    const adminDocumentSnapshot = await login({
       email: data.get("email"),
       password: data.get("password"),
+      userType: "admin"
     });
+    console.log(adminDocumentSnapshot.data())
   };
 
   return (
